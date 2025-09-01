@@ -7,7 +7,7 @@ async function bootstrap() {
 
   const config = new DocumentBuilder()
     .setTitle('API AirConnect backend')
-    .setDescription('API de la plataforma de vuelos de Air Connect')
+    .setDescription('Esta api describe la plataforma de vuelos de Air Connect')
     .setVersion('1.0.0')
     .addTag('app-airconnect-api')
     .build();
