@@ -27,8 +27,4 @@ export class VuelosController {
     return this.vuelosService.update(+id, updateVueloDto);
   }
 
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.vuelosService.remove(+id);
-  }
 }
