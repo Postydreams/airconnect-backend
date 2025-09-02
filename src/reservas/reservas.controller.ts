@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Get, Post, Put, Delete, Body, Param, Query } from '@nestjs/common';
 import { ReservasService } from './reservas.service';
 import { CreateReservaDto } from './dto/create-reserva.dto';
 import { UpdateReservaDto } from './dto/update-reserva.dto';
@@ -8,13 +8,13 @@ export class ReservasController {
   constructor(private readonly reservasService: ReservasService) {}
 
   @Post()
-  create(@Body() createReservaDto: CreateReservaDto) {
-    return this.reservasService.create(createReservaDto);
+  create(@Body() dto: CreateReservaDto) {
+    return this.reservasService.create(dto);
   }
 
   @Get()
-  findAll() {
-    return this.reservasService.findAll();
+  findAll(@Query('pasajeroId') pasajeroId?: string) {
+    return this.reservasService.findAll(pasajeroId ? +pasajeroId : undefined);
   }
 
   @Get(':id')
@@ -22,9 +22,9 @@ export class ReservasController {
     return this.reservasService.findOne(+id);
   }
 
-  @Patch(':id')
-  update(@Param('id') id: string, @Body() updateReservaDto: UpdateReservaDto) {
-    return this.reservasService.update(+id, updateReservaDto);
+  @Put(':id')
+  update(@Param('id') id: string, @Body() dto: UpdateReservaDto) {
+    return this.reservasService.update(+id, dto);
   }
 
   @Delete(':id')
