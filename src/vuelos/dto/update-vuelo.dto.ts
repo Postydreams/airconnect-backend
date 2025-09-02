@@ -1,4 +1,6 @@
-import { PartialType } from '@nestjs/mapped-types';
-import { CreateVueloDto } from './create-vuelo.dto';
+import { ApiProperty } from "@nestjs/swagger";
 
-export class UpdateVueloDto extends PartialType(CreateVueloDto) {}
+export class UpdateVueloDto {
+  @ApiProperty()
+  estado: string;
+}
